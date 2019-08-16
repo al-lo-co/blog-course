@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
 
   def index
   	@articles = Article.all
-    if user_signed_in? && (current_user.is_admin? || current_user.is_editor?)
+    if user_signed_in? && (current_user.is_admin?)
       render "admin_articles"
     end
   end

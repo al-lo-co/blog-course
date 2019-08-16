@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
-    if user_signed_in? && (current_user.is_admin?|| current_user.is_editor?)
+    if user_signed_in? && (current_user.is_admin?)
       render "admin_categories"
     end
   end
