@@ -41,6 +41,8 @@ gem 'jquery-rails'
 
 gem 'devise'
 
+gem 'bundler', '~> 2.0.1'
+
 group :production do
   gem 'pg'
 end
