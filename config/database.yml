@@ -27,3 +27,4 @@ production:
   database: blog_production
   username: blog
   password: <%= ENV['blog_DATABASE_PASSWORD'] %>
+#bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java

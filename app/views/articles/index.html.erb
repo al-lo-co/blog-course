@@ -32,5 +32,6 @@
 </table>
 
 <br>
-
-<%= link_to 'Nuevo artículo', new_article_path %>
+<%if user_signed_in?%>
+  <%= link_to 'Nuevo artículo', new_article_path %>
+<%end%>
