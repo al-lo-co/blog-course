@@ -1,0 +1,15 @@
+<h1> Búsqueda de palabra "<%=params[:search]%>"</h1>
+<div class="row">
+  <% unless @articles.blank?%>
+    <%@articles.each do |article|%>
+      <div class="container jumbotron col-md-5">  
+        <h3><%= link_to article.title, article%></h3><br>
+        <%= article.body%><br>
+      </div>
+    <%end%>
+  <%else%>
+    <div class="container jumbotron col-md-5">
+      <h3>No se han encontrado artículos con esta palabra.</h3>
+    </div>
+  <%end%>  
+</div>

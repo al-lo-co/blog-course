@@ -1,0 +1,26 @@
+<div class="jumbotron">
+  <table class="table-hover">
+    <caption>Artículos</caption>
+    <thead class="table-active">
+      <tr>
+        <th>Titulo</th>
+        <th>Cuerpo</th>
+        <th>Autor</th>
+        <th>Fecha de creación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@articles.each do |article| %>
+        <tr>
+          <td><%= article.title%></td>
+          <td><%= truncate(article.body, length: 200 )%></td>
+          <td><%= article.user.email %></td>
+          <td><%= article.created_at%></td>
+          <td><%= link_to "Editar articulo", edit_article_path(article), class:"btn btn-warning"%></td>
+          <td><%= link_to "Mostrar articulo", article, class:"btn btn-info" %></td>
+          <td><%= link_to "Eliminar articulo", article, method: :delete, data:{confirm: "Deseas eliminar artículo"}, class:"btn btn-danger" %></td> <br>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,15 @@
+<%if user_signed_in? && (current_user.is_editor? || current_user.is_admin?) %>
+	<div class="list-group">
+		<%= link_to "Administrador", root_path, class: "list-group-item list-group-item-action active"%>
+	    <%= link_to "Ver artículos", articles_path, class: "list-group-item list-group-item-action"%>
+	    <%= link_to "Crear artículo", new_article_path, class: "list-group-item list-group-item-action"%>
+	    <%= link_to "Ver categorías", categories_path, class: "list-group-item list-group-item-action"%>
+	    <%= link_to "Crear categorías", new_category_path, class: "list-group-item list-group-item-action"%>
+	</div>
+<%end%>
+<div class="list-group">
+	<%= link_to "Categorias", categories_path, class: "list-group-item list-group-item-action active"%>
+    <%@categorias.each do |category| %>
+      <%= link_to category.name, category, class: "list-group-item list-group-item-action"%>
+    <%end%>
+</div>

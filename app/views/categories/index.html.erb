@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Categorias</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <div class="row"> 
+      <% @categories.each do |category| %>
+        <div class="container jumbotron col-md-5 ">
+          <div class="row">
+            <h1 class="display-8"><%= link_to category.name, category %></h1>
+          </div>
+          <div class="row">
+            <%= category.description %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Category', new_category_path %>

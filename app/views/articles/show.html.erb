@@ -1,0 +1,40 @@
+<div class="container jumbotron col-md-5 ">
+  <h1 class="form-group row"> <%= @article.title%></h1> <br>
+  <h5 class="form-group row"> <%= @article.body.html_safe %> </h5>
+  <%if user_signed_in?%>
+    <%if current_user.is_editor?%>
+      <%= link_to "Editar", edit_article_path(@article) %>
+    <%end%>
+    <%if current_user.is_admin?%> 
+      <%= link_to "Eliminar", @article, method: :delete%>
+    <%end%>
+    <%= link_to "Atrás", root_path %>
+  <%end%>
+
+  <h3 class="form-group row">Categorias</h3>
+  <h5>
+    <%@article.categories.each do |categories_articles|%>
+      <%= link_to categories_articles.name, categories_articles, class:"badge badge-primary" %><br>
+    <%end%>
+  </h5>  
+  <div class="form-group row">
+    <% @comments.each do |comment|%>
+      <% if comment.article.id == @article.id%>
+        <div class="col-md-8">
+          <%= comment.user.email%><br>
+          <%= comment.created_at.strftime("%D %H:%M:%S") %><br>
+          <%= comment.body%><br>
+        </div>
+        <div class="col-md-6">
+          <% if comment.user == current_user%>
+            <%= link_to 'Editar', edit_article_comment_path(@article, comment), class:"btn btn-block btn-warning" %>
+            <%= link_to 'Eliminar', [@article, comment], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-block btn-danger" %><br>
+          <%end%>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+  <%if user_signed_in?%>
+    <%= render "comments/form", comment: @comment=Comment.new%>
+  <%end%>
+</div>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <h1><%= @category.name %></h1>
+</p>
+<p>
+  <h4><%= @category.description.html_safe %></h4> 
+</p>
+<%= link_to 'Back', categories_path %> <br>
+
+<h2> Artículos </h2>
+
+<div class="row">
+  <%@category.articles.each do |category_articles|%>
+    <div class="container jumbotron col-md-5 ">
+      <h2><%= link_to category_articles.title, category_articles %></h2> <br>
+      <%= category_articles.body%>
+    </div>
+  <%end%>
+</div>
