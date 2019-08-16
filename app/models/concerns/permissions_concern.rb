@@ -1,14 +1,10 @@
 module PermissionsConcern extend ActiveSupport::Concern
-  
-  def is_normal_user?
+
+  def is_editor?
     self.permission == 0
   end
 
-  def is_editor?
-    self.permission == 1
-  end
-
   def is_admin?
-    self.permission == 2
+    self.permission == 1
   end
 end

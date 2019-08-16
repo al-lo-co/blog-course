@@ -32,6 +32,6 @@
 </table>
 
 <br>
-<%if user_signed_in?%>
+<%if user_signed_in? && current_user.is_editor?%>
   <%= link_to 'Nuevo artículo', new_article_path %>
 <%end%>
